@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/itemOnePosition_Ax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12.21"
+        android:layout_weight="1"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/itemOnePosition_Ay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12.22"
+        android:layout_weight="1"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/itemOnePosition_Az"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12.23"
+        android:layout_weight="1"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/itemOnePosition_Wx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12.24"
+        android:layout_weight="1"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/itemOnePosition_Wy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12.25"
+        android:layout_weight="1"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/itemOnePosition_Wz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12.23"
+        android:layout_weight="1"
+        android:textColor="@android:color/black" />
+
+
+    <TextView
+        android:id="@+id/itemOnePosition_stepTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="500"
+        android:layout_weight="1"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/itemOnePosition_operation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25"
+        android:layout_weight="1"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>

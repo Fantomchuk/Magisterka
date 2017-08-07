@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.nazar.v102_l100.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <Button
+        android:id="@+id/mainActivity_btn_start_service_data_collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start service (Data collection)"
+        android:onClick="startService"/>
+
+    <Button
+        android:id="@+id/mainActivity_btn_stop_service_data_collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainActivity_btn_start_service_data_collection"
+        android:text="Stop service (Data collection)"
+        android:onClick="stopService"/>
+
+    <Button
+        android:id="@+id/mainActivity_btn_data_base"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainActivity_btn_stop_service_data_collection"
+        android:text="Data Base"
+        android:onClick="dataBaseShow"/>
+
+    <Button
+        android:id="@+id/mainActivity_btn_show_graphs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/mainActivity_btn_data_base"
+        android:layout_below="@+id/mainActivity_btn_stop_service_data_collection"
+        android:text="Show graphs"
+        android:onClick="graphsShow"/>
+
+    <Button
+        android:id="@+id/mainActivity_btn_data_base_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainActivity_btn_data_base"
+        android:text="Data Base Delete"
+        android:onClick="dataBaseDelete"/>
+
+    <Button
+        android:id="@+id/mainActivity_btn_create_files"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainActivity_btn_data_base_delete"
+        android:text="Create files"
+        android:onClick="createFiles"/>
+
+    <LinearLayout
+        android:layout_below="@+id/mainActivity_btn_create_files"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/mainActivity_ll_pb">
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="22dp"
+            android:id="@+id/mainActivity_pb" />
+        <TextView
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reading the data from the sensors, and adding to the database"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

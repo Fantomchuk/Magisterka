@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_all_graphs"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nazar.v102_l100.AllGraphs">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose which graph to display"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:id="@+id/allGraphs_tv"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acceleration along the X axis"
+        android:layout_below="@+id/allGraphs_tv"
+        android:id="@+id/allGraphs_btn_Ax"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acceleration along the Y axis"
+        android:layout_below="@+id/allGraphs_btn_Ax"
+        android:id="@+id/allGraphs_btn_Ay"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acceleration along the Z axis"
+        android:layout_below="@+id/allGraphs_btn_Ay"
+        android:id="@+id/allGraphs_btn_Az"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Angle around X axis"
+        android:layout_below="@+id/allGraphs_btn_Az"
+        android:id="@+id/allGraphs_btn_Wx"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Angle around Y axis"
+        android:layout_below="@+id/allGraphs_btn_Wx"
+        android:id="@+id/allGraphs_btn_Wy"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Angle around Z axis"
+        android:layout_below="@+id/allGraphs_btn_Wy"
+        android:id="@+id/allGraphs_btn_Wz"/>
+
+</RelativeLayout>
