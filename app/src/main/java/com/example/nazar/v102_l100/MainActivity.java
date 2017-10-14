@@ -10,11 +10,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -23,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     Button start_service, stop_service, data_base, data_base_delete, create_files;
     LinearLayout mainActivity_ll_pb;
+    EditText mainActivity_eT_time_step;
     final public static String KEY_FOR_INTENT_STEP_TIME = "com.example.nazar/time";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         data_base_delete = (Button) findViewById(R.id.mainActivity_btn_data_base_delete);
         create_files = (Button) findViewById(R.id.mainActivity_btn_create_files);
         mainActivity_ll_pb = (LinearLayout) findViewById(R.id.mainActivity_ll_pb);
+        mainActivity_eT_time_step = (EditText) findViewById(R.id.mainActivity_eT_time_step);
 
         stop_service.setEnabled(false);
         mainActivity_ll_pb.setVisibility(View.GONE);
@@ -64,8 +70,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startService(View view) {
+        int time_step;
+        String time_step_string = mainActivity_eT_time_step.getText().toString();
+        if(TextUtils.isEmpty(time_step_string)){
+            //по замовчуванні встановлюємо 500, тобто пів секунди
+            time_step = 500;
+        }else{
+            time_step = Integer.parseInt(time_step_string);
+            if(time_step < 100)
+                time_step = 100;
+            if(time_step > 2000)
+                time_step = 2000;
+        }
+
         Log.d("qqqqq", "startService");
-        startService(new Intent(this, MyServiceDataCollection.class).putExtra(KEY_FOR_INTENT_STEP_TIME, 1000));
+        Log.d("qqqqq", time_step + "");
+        startService(new Intent(this, MyServiceDataCollection.class).putExtra(KEY_FOR_INTENT_STEP_TIME, time_step));
         start_service.setEnabled(false);
         stop_service.setEnabled(true);
         data_base_delete.setEnabled(false);
@@ -76,11 +96,12 @@ public class MainActivity extends AppCompatActivity {
     public void stopService(View view) {
         Log.d("qqqqq", "stopService");
         stopService(new Intent(this, MyServiceDataCollection.class));
+        //видимість і клікабльність кнопок
         stop_service.setEnabled(false);
         start_service.setEnabled(true);
         data_base_delete.setEnabled(true);
-        mainActivity_ll_pb.setVisibility(View.GONE);
         create_files.setEnabled(true);
+        mainActivity_ll_pb.setVisibility(View.GONE);
     }
 
 

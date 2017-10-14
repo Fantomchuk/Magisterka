@@ -84,6 +84,18 @@
             android:textColor="@android:color/black"
             android:textSize="18sp"
             />
+
     </LinearLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="4"
+        android:hint="500"
+        android:textAlignment="center"
+        android:layout_alignBottom="@+id/mainActivity_btn_start_service_data_collection"
+        android:layout_toEndOf="@+id/mainActivity_btn_start_service_data_collection"
+        android:id="@+id/mainActivity_eT_time_step" />
 
 </RelativeLayout>

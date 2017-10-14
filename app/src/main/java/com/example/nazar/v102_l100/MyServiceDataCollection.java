@@ -141,6 +141,7 @@ public class MyServiceDataCollection extends Service {
                     positionInListServiceStart = MyServiceRunning(MyServiceDataCollection.class, positionInListServiceStart);
                     if (positionInListServiceStart == -1) {
                         Log.d("qqqqq", "end");
+                        sensorManager.unregisterListener(listener);
                         timer.cancel();
                     }
                 }
@@ -181,24 +182,61 @@ public class MyServiceDataCollection extends Service {
         float[] outR = new float[9];
         void getActualDeviceOrientation() {
             SensorManager.getRotationMatrix(inR, null, valuesAccel, valuesMagnet);
-            int x_axis = SensorManager.AXIS_X;
-            int y_axis = SensorManager.AXIS_Y;
+            int axisX = SensorManager.AXIS_X;
+            int axisY = SensorManager.AXIS_Y;
             switch (rotation) {
                 case (Surface.ROTATION_0): break;
                 case (Surface.ROTATION_90):
-                    x_axis = SensorManager.AXIS_Y;
-                    y_axis = SensorManager.AXIS_MINUS_X;
+                    axisX = SensorManager.AXIS_Y;
+                    axisY = SensorManager.AXIS_MINUS_X;
                     break;
                 case (Surface.ROTATION_180):
-                    y_axis = SensorManager.AXIS_MINUS_Y;
+                    axisY = SensorManager.AXIS_MINUS_Y;
                     break;
                 case (Surface.ROTATION_270):
-                    x_axis = SensorManager.AXIS_MINUS_Y;
-                    y_axis = SensorManager.AXIS_X;
+                    axisX = SensorManager.AXIS_MINUS_Y;
+                    axisY = SensorManager.AXIS_X;
                     break;
                 default: break;
             }
-            SensorManager.remapCoordinateSystem(inR, x_axis, y_axis, outR);
+//            boolean isUpSideDown = valuesAccel[2] < 0;
+//            int axisX,axisY;
+//
+//            switch (rotation) {
+//                case Surface.ROTATION_0:
+//                    axisX = (isUpSideDown ? SensorManager.AXIS_MINUS_X : SensorManager.AXIS_X);
+//                    axisY = (Math.abs(valuesAccel[1]) > 6.0f ?
+//                            (isUpSideDown ? SensorManager.AXIS_MINUS_Z : SensorManager.AXIS_Z) :
+//                            (isUpSideDown ? SensorManager.AXIS_MINUS_Y : SensorManager.AXIS_Y));
+//                    break;
+//                case Surface.ROTATION_90:
+//                    axisX = (isUpSideDown ? SensorManager.AXIS_MINUS_Y : SensorManager.AXIS_Y);
+//                    axisY = (Math.abs(valuesAccel[0]) > 6.0f ?
+//                            (isUpSideDown ? SensorManager.AXIS_Z : SensorManager.AXIS_MINUS_Z) :
+//                            (isUpSideDown ? SensorManager.AXIS_X : SensorManager.AXIS_MINUS_X));
+//                    break;
+//                case  Surface.ROTATION_180:
+//                    axisX = (isUpSideDown ? SensorManager.AXIS_X : SensorManager.AXIS_MINUS_X);
+//                    axisY = (Math.abs(valuesAccel[1]) > 6.0f ?
+//                            (isUpSideDown ? SensorManager.AXIS_Z : SensorManager.AXIS_MINUS_Z) :
+//                            (isUpSideDown ? SensorManager.AXIS_Y : SensorManager.AXIS_MINUS_Y));
+//                    break;
+//                case Surface.ROTATION_270:
+//                    axisX = (isUpSideDown ? SensorManager.AXIS_Y : SensorManager.AXIS_MINUS_Y);
+//                    axisY = (Math.abs(valuesAccel[0]) > 6.0f ?
+//                            (isUpSideDown ? SensorManager.AXIS_MINUS_Z : SensorManager.AXIS_Z) :
+//                            (isUpSideDown ? SensorManager.AXIS_MINUS_X : SensorManager.AXIS_X));
+//                    break;
+//                default:
+//                    axisX = (isUpSideDown ? SensorManager.AXIS_MINUS_X : SensorManager.AXIS_X);
+//                    axisY = (isUpSideDown ? SensorManager.AXIS_MINUS_Y : SensorManager.AXIS_Y);
+//            }
+
+
+
+
+
+            SensorManager.remapCoordinateSystem(inR, axisX, axisY, outR);
             SensorManager.getOrientation(outR, valuesResultOrientation);
             valuesResultOrientation[0] = (float)Math.toDegrees(valuesResultOrientation[0]);
             valuesResultOrientation[1] = (float)Math.toDegrees(valuesResultOrientation[1]);
