@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -48,9 +49,17 @@ public class ChoiseOperationGraphs extends AppCompatActivity {
         choiseOperationGraphs_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
-                intent.setClass(ChoiseOperationGraphs.this, OneGraph.class);
-                startActivity(intent);
+                //провіряємо чи це не шлях
+                if( intent.getStringExtra(AllGraphs.KEY_FOR_INTENT_GRAPH).equals("way") ){
+                    intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
+                    intent.setClass(ChoiseOperationGraphs.this, OneWay.class);
+                    startActivity(intent);
+                }else{
+                    intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
+                    intent.setClass(ChoiseOperationGraphs.this, OneGraph.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }

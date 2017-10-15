@@ -51,17 +51,28 @@ public class OneGraph extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_graph);
 
+        /**
+         * дані що приходять з бази даних
+         * nameGraphics - для якої операції будуємо графік
+         * isRunMyService - чи працює на даний момент сервіс
+         * operation - для якого досліду виконуємо дану побудову
+         */
         Intent intent = getIntent();
         nameGraphics = intent.getStringExtra(AllGraphs.KEY_FOR_INTENT_GRAPH);
         isRunMyService = intent.getBooleanExtra(ChoiseOperationGraphs.KEY_FOR_INTENT_RUN_MY_SERVICE, false);
         operation = intent.getIntExtra(ChoiseOperationGraphs.KEY_FOR_INTENT_OPERATION, -1);
 
+        /**
+         * відкриваємо базу і читаємо дані потрібні для побудови
+         * dataForGraph - масив чисел по потрібній осі
+         * lastIndexT1 - останній індекс в досліді на цей момент
+         */
         dbF = new DBFunctions(this);
         dbF.open();
         dataForGraph = dbF.getArrayForGraphics(nameGraphics, operation);
         lastIndexT1 = dbF.lastIndexTable1();
 
-
+        //знаходимо головний екра активності
         graphLayout = (RelativeLayout) findViewById(R.id.activity_one_graph);
         //Створюємо новий обєкт - графік
         mChart = new LineChart(this);
@@ -172,6 +183,11 @@ public class OneGraph extends AppCompatActivity {
             }
             //Додаємо нове значення
             //data.addXValue
+            /**
+             * y - значення яке приходить в функцію, це або кут або прискорення
+             * х - беремо кількість побудованих пунктів, а так як рахунок йде від 0 то зразу
+             *      додаємо його в якості першого параметру
+             */
             data.addEntry(new Entry(set.getEntryCount(), y), 0);
 
             //робимо оновлення даних

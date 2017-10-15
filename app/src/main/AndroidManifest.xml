@@ -43,7 +43,10 @@
         <activity android:name=".CreateFiles" />
         <activity android:name=".AllGraphs" />
         <activity android:name=".ChoiseOperationGraphs" />
-        <activity android:name=".OneGraph"
+        <activity
+            android:name=".OneGraph"
+            android:screenOrientation="landscape" />
+        <activity android:name=".OneWay"
             android:screenOrientation="landscape" />
     </application>
 

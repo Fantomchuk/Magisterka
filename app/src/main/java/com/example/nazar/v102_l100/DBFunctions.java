@@ -166,6 +166,12 @@ public class DBFunctions {
         return positions;
     }
 
+    /**
+     *
+     * @param columnName - назва колонки з таблиці Т1
+     * @param operation - наша дослід
+     * @return ArrayList<Double> - масив значень по назві з бази даних Т1
+     */
     public ArrayList<Double> getArrayForGraphics(String columnName, int operation){
         ArrayList<Double> result = new ArrayList<>();
         if(operation == -1) return result;
@@ -204,6 +210,26 @@ public class DBFunctions {
             }
         }
         return result;
+    }
+
+    public int getStepTime(int operation){
+        Cursor cursor;
+        String str_sql = "SELECT c.stepTime " +
+                "FROM collectionData as c " +
+                "WHERE c.operation = " + operation + " " +
+                "ORDER BY c._id DESC " +
+                "LIMIT 1";
+        cursor = sqLiteDatabase.rawQuery(str_sql, null);
+        if (cursor.getCount() != 0) {
+            int stepTimeIndex = cursor.getColumnIndex(DBHelper.KEY_T1_STEP_TIME);
+            if (cursor.moveToFirst()) {
+                int stepTime = cursor.getInt(stepTimeIndex);
+                cursor.close();
+                return stepTime;
+            }
+        }
+        cursor.close();
+        return 0;
     }
 
 }

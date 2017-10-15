@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Log.d("qqqqq", "startService");
-        Log.d("qqqqq", time_step + "");
         startService(new Intent(this, MyServiceDataCollection.class).putExtra(KEY_FOR_INTENT_STEP_TIME, time_step));
         start_service.setEnabled(false);
         stop_service.setEnabled(true);
