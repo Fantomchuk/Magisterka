@@ -98,4 +98,13 @@
         android:layout_toEndOf="@+id/mainActivity_btn_start_service_data_collection"
         android:id="@+id/mainActivity_eT_time_step" />
 
+    <Button
+        android:id="@+id/mainActivity_btn_filtr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show filtr"
+        android:layout_below="@+id/mainActivity_btn_data_base_delete"
+        android:layout_toEndOf="@+id/mainActivity_btn_create_files"
+        android:onClick="startFiltr"/>
+
 </RelativeLayout>

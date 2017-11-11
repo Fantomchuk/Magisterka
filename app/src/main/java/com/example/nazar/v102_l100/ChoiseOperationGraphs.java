@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ChoiseOperationGraphs extends AppCompatActivity {
@@ -51,9 +52,14 @@ public class ChoiseOperationGraphs extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //провіряємо чи це не шлях
                 if( intent.getStringExtra(AllGraphs.KEY_FOR_INTENT_GRAPH).equals("way") ){
-                    intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
-                    intent.setClass(ChoiseOperationGraphs.this, OneWay.class);
-                    startActivity(intent);
+                    if (MyServiceRunning(MyServiceDataCollection.class)){
+                        choiseOperationGraphs_ListView.setVisibility(View.GONE);
+                        ((TextView)findViewById(R.id.choiseOperationGraphs_tv)).setText("Works server, this operation is impossible");
+                    }else{
+                        intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
+                        intent.setClass(ChoiseOperationGraphs.this, OneWay.class);
+                        startActivity(intent);
+                    }
                 }else{
                     intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
                     intent.setClass(ChoiseOperationGraphs.this, OneGraph.class);

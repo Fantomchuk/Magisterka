@@ -81,7 +81,7 @@ public class OneGraph extends AppCompatActivity {
                 (AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT));
         //налаштовуэмо mChart
         Description des = new Description();
-        des.setText("Мй графік");
+        des.setText("");
         mChart.setDescription(des);
 
         //включаємо виділення
@@ -201,7 +201,7 @@ public class OneGraph extends AppCompatActivity {
 
     //метод створення
     private LineDataSet createSet(){
-        LineDataSet set = new LineDataSet(null, "spl db");
+        LineDataSet set = new LineDataSet(null, nameGraphics);
         set.setDrawCircles(true);
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(ColorTemplate.getHoloBlue());

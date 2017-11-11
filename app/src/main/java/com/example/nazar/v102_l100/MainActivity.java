@@ -122,5 +122,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, AllGraphs.class));
     }
 
-
+    public void startFiltr(View view){
+        startActivity(new Intent(this, FiltrKalman.class));
+    }
 }
