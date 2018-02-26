@@ -66,4 +66,11 @@
         android:layout_below="@+id/allGraphs_btn_Wz"
         android:id="@+id/allGraphs_btn_way"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Revert"
+        android:layout_below="@+id/allGraphs_btn_way"
+        android:id="@+id/allGraphs_btn_revert"/>
+
 </RelativeLayout>

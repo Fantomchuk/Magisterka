@@ -23,12 +23,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button start_service, stop_service, data_base, data_base_delete, create_files;
+    Button start_service, stop_service, data_base, data_base_delete, create_files, rever_data;
     LinearLayout mainActivity_ll_pb;
     EditText mainActivity_eT_time_step;
     final public static String KEY_FOR_INTENT_STEP_TIME = "com.example.nazar/time";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         data_base = (Button) findViewById(R.id.mainActivity_btn_data_base);
         data_base_delete = (Button) findViewById(R.id.mainActivity_btn_data_base_delete);
         create_files = (Button) findViewById(R.id.mainActivity_btn_create_files);
+        rever_data = (Button) findViewById(R.id.mainActivity_btn_revert);
         mainActivity_ll_pb = (LinearLayout) findViewById(R.id.mainActivity_ll_pb);
         mainActivity_eT_time_step = (EditText) findViewById(R.id.mainActivity_eT_time_step);
 
@@ -86,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("qqqqq", "startService");
         startService(new Intent(this, MyServiceDataCollection.class).putExtra(KEY_FOR_INTENT_STEP_TIME, time_step));
         start_service.setEnabled(false);
+        rever_data.setEnabled(false);
         stop_service.setEnabled(true);
         data_base_delete.setEnabled(false);
         mainActivity_ll_pb.setVisibility(View.VISIBLE);
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         //видимість і клікабльність кнопок
         stop_service.setEnabled(false);
         start_service.setEnabled(true);
+        rever_data.setEnabled(true);
         data_base_delete.setEnabled(true);
         create_files.setEnabled(true);
         mainActivity_ll_pb.setVisibility(View.GONE);
@@ -124,5 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startFiltr(View view){
         startActivity(new Intent(this, FiltrKalman.class));
+    }
+
+    public void revertData(View view){
+        startActivity(new Intent(this, AllGraphs.class));
     }
 }

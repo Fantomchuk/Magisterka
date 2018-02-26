@@ -60,6 +60,15 @@ public class ChoiseOperationGraphs extends AppCompatActivity {
                         intent.setClass(ChoiseOperationGraphs.this, OneWay.class);
                         startActivity(intent);
                     }
+                }else if( intent.getStringExtra(AllGraphs.KEY_FOR_INTENT_GRAPH).equals("revert") ){
+                    if (MyServiceRunning(MyServiceDataCollection.class)){
+                        choiseOperationGraphs_ListView.setVisibility(View.GONE);
+                        ((TextView)findViewById(R.id.choiseOperationGraphs_tv)).setText("Works server, this operation is impossible");
+                    }else{
+                        intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
+                        intent.setClass(ChoiseOperationGraphs.this, oneRevert.class);
+                        startActivity(intent);
+                    }
                 }else{
                     intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
                     intent.setClass(ChoiseOperationGraphs.this, OneGraph.class);

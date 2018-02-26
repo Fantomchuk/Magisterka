@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class AllGraphs extends AppCompatActivity {
 
-    Button btn_Ax,btn_Ay,btn_Az,btn_Wx,btn_Wy,btn_Wz,btn_way;
+    Button btn_Ax,btn_Ay,btn_Az,btn_Wx,btn_Wy,btn_Wz,btn_way,btn_revert;
     public static final String KEY_FOR_INTENT_GRAPH = "com.example.nazar/graph";
 
 
@@ -24,6 +24,7 @@ public class AllGraphs extends AppCompatActivity {
         btn_Wy = (Button) findViewById(R.id.allGraphs_btn_Wy);
         btn_Wz = (Button) findViewById(R.id.allGraphs_btn_Wz);
         btn_way = (Button) findViewById(R.id.allGraphs_btn_way);
+        btn_revert = (Button) findViewById(R.id.allGraphs_btn_revert);
 
         View.OnClickListener listener_btn = new View.OnClickListener() {
             @Override
@@ -51,6 +52,9 @@ public class AllGraphs extends AppCompatActivity {
                     case R.id.allGraphs_btn_way:
                         intent.putExtra(KEY_FOR_INTENT_GRAPH, "way");
                         break;
+                    case R.id.allGraphs_btn_revert:
+                        intent.putExtra(KEY_FOR_INTENT_GRAPH, "revert");
+                        break;
                 }
                 startActivity(intent);
             }
@@ -62,5 +66,6 @@ public class AllGraphs extends AppCompatActivity {
         btn_Wy.setOnClickListener(listener_btn);
         btn_Wz.setOnClickListener(listener_btn);
         btn_way.setOnClickListener(listener_btn);
+        btn_revert.setOnClickListener(listener_btn);
     }
 }
