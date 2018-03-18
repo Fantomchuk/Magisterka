@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
             time_step = 500;
         }else{
             time_step = Integer.parseInt(time_step_string);
-            if(time_step < 100)
-                time_step = 100;
+            if(time_step < 20)
+                time_step = 20;
             if(time_step > 2000)
                 time_step = 2000;
         }
