@@ -116,8 +116,8 @@ public class MyServiceDataCollection extends Service {
                     }
                 }
             };
-            sensorManager.registerListener(listener, sensorAccel, SensorManager.SENSOR_DELAY_NORMAL);
-            sensorManager.registerListener(listener, sensorMagnet, SensorManager.SENSOR_DELAY_NORMAL);
+            sensorManager.registerListener(listener, sensorAccel, SensorManager.SENSOR_DELAY_FASTEST);
+            sensorManager.registerListener(listener, sensorMagnet, SensorManager.SENSOR_DELAY_FASTEST);
 
             //завдання яке буде спрацьовувати з кроком часу який задамо,
             // для зчитування даних з сенсорів, і додавання їх в базу даних
@@ -182,23 +182,26 @@ public class MyServiceDataCollection extends Service {
         float[] outR = new float[9];
         void getActualDeviceOrientation() {
             SensorManager.getRotationMatrix(inR, null, valuesAccel, valuesMagnet);
-            int axisX = SensorManager.AXIS_X;
-            int axisY = SensorManager.AXIS_Y;
-            switch (rotation) {
-                case (Surface.ROTATION_0): break;
-                case (Surface.ROTATION_90):
-                    axisX = SensorManager.AXIS_Y;
-                    axisY = SensorManager.AXIS_MINUS_X;
-                    break;
-                case (Surface.ROTATION_180):
-                    axisY = SensorManager.AXIS_MINUS_Y;
-                    break;
-                case (Surface.ROTATION_270):
-                    axisX = SensorManager.AXIS_MINUS_Y;
-                    axisY = SensorManager.AXIS_X;
-                    break;
-                default: break;
-            }
+//            int axisX = SensorManager.AXIS_X;
+//            int axisY = SensorManager.AXIS_Y;
+//            switch (rotation) {
+//                case (Surface.ROTATION_0): break;
+//                case (Surface.ROTATION_90):
+//                    axisX = SensorManager.AXIS_Y;
+//                    axisY = SensorManager.AXIS_MINUS_X;
+//                    break;
+//                case (Surface.ROTATION_180):
+//                    axisY = SensorManager.AXIS_MINUS_Y;
+//                    break;
+//                case (Surface.ROTATION_270):
+//                    axisX = SensorManager.AXIS_MINUS_Y;
+//                    axisY = SensorManager.AXIS_X;
+//                    break;
+//                default: break;
+//            }
+
+
+
 //            boolean isUpSideDown = valuesAccel[2] < 0;
 //            int axisX,axisY;
 //
@@ -233,11 +236,9 @@ public class MyServiceDataCollection extends Service {
 //            }
 
 
-
-
-
-            SensorManager.remapCoordinateSystem(inR, axisX, axisY, outR);
-            SensorManager.getOrientation(outR, valuesResultOrientation);
+//            SensorManager.remapCoordinateSystem(inR, axisX, axisY, outR);
+//            SensorManager.getOrientation(outR, valuesResultOrientation);
+            SensorManager.getOrientation(inR, valuesResultOrientation);
             valuesResultOrientation[0] = (float)Math.toDegrees(valuesResultOrientation[0]);
             valuesResultOrientation[1] = (float)Math.toDegrees(valuesResultOrientation[1]);
             valuesResultOrientation[2] = (float)Math.toDegrees(valuesResultOrientation[2]);
