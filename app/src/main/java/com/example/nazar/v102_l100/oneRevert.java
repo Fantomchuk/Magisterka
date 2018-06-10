@@ -491,13 +491,13 @@ public class oneRevert extends AppCompatActivity {
             S_oYXZo.add(tmp_s__xyz);
         }
 
-        double all_way__xy = 0;
+        double all_way__xyz = 0;
         for(int i = 0; i < S_oYXZo.size(); i++){
-            all_way__xy = all_way__xy + S_oYXZo.get(i);
+            all_way__xyz = all_way__xyz + S_oYXZo.get(i);
         }
-        Log.d("qqqqq","all_way__xy=\t\t" + roundDouble(all_way__xy, 4));
+        Log.d("qqqqq","all_way__xyz=\t\t" + roundDouble(all_way__xyz, 4));
 
-        txt_1.setText("all_way__xy=\t\t" + roundDouble(all_way__xy, 4) );
+        txt_1.setText("all_way__xyz=\t\t" + roundDouble(all_way__xyz, 4) );
     }
     private String roundDouble(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();

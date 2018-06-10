@@ -102,7 +102,7 @@
         android:id="@+id/mainActivity_btn_revert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Revert data"
+        android:text="Way"
         android:onClick="revertData"
         android:layout_below="@+id/mainActivity_ll_pb"
         android:layout_alignParentStart="true"
