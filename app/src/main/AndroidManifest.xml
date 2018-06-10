@@ -46,12 +46,6 @@
         <activity
             android:name=".OneGraph"
             android:screenOrientation="landscape" />
-        <activity
-            android:name=".OneWay"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".FiltrKalman"
-            android:screenOrientation="landscape" />
         <activity android:name=".oneRevert"></activity>
     </application>
 

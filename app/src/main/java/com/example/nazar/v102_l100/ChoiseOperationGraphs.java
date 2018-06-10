@@ -50,17 +50,7 @@ public class ChoiseOperationGraphs extends AppCompatActivity {
         choiseOperationGraphs_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //провіряємо чи це не шлях
-                if( intent.getStringExtra(AllGraphs.KEY_FOR_INTENT_GRAPH).equals("way") ){
-                    if (MyServiceRunning(MyServiceDataCollection.class)){
-                        choiseOperationGraphs_ListView.setVisibility(View.GONE);
-                        ((TextView)findViewById(R.id.choiseOperationGraphs_tv)).setText("Works server, this operation is impossible");
-                    }else{
-                        intent.putExtra(KEY_FOR_INTENT_OPERATION, i);
-                        intent.setClass(ChoiseOperationGraphs.this, OneWay.class);
-                        startActivity(intent);
-                    }
-                }else if( intent.getStringExtra(AllGraphs.KEY_FOR_INTENT_GRAPH).equals("revert") ){
+                if( intent.getStringExtra(AllGraphs.KEY_FOR_INTENT_GRAPH).equals("revert") ){
                     if (MyServiceRunning(MyServiceDataCollection.class)){
                         choiseOperationGraphs_ListView.setVisibility(View.GONE);
                         ((TextView)findViewById(R.id.choiseOperationGraphs_tv)).setText("Works server, this operation is impossible");
