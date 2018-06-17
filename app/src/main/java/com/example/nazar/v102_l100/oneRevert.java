@@ -20,8 +20,8 @@ public class oneRevert extends AppCompatActivity {
     ArrayList<Double> dataArray_Ax_oYXZo, dataArray_Ay_oYXZo, dataArray_Az_oYXZo;
 
     ArrayList<Double> A_oYXZo__x, A_oYXZo__y, A_oYXZo__z;
-    ArrayList<Double> V_oYXZo__x, V_oYXZo__y, V_oYXZo__z, V_oYXZo__xyz;
-    ArrayList<Double> S_oYXZo;
+    ArrayList<Double> V_oYXZo__x, V_oYXZo__y, V_oYXZo__z, V_oYXZo__xy, V_oYXZo__xyz;
+    ArrayList<Double> S_oYXo, S_oYXZo;
 
     String answer;
     @Override
@@ -126,7 +126,8 @@ public class oneRevert extends AppCompatActivity {
         // przyspierzenia w płaszczyznie
 
         A_oYXZo__x = new ArrayList<>(); A_oYXZo__y = new ArrayList<>(); A_oYXZo__z = new ArrayList<>();
-        V_oYXZo__x = new ArrayList<>(); V_oYXZo__y = new ArrayList<>(); V_oYXZo__z = new ArrayList<>();  V_oYXZo__xyz = new ArrayList<>();
+        V_oYXZo__x = new ArrayList<>(); V_oYXZo__y = new ArrayList<>(); V_oYXZo__z = new ArrayList<>();  V_oYXZo__xy = new ArrayList<>(); V_oYXZo__xyz = new ArrayList<>();
+        S_oYXo = new ArrayList<>();
         S_oYXZo = new ArrayList<>();
         double time = (double)StepTime/1000;
 
@@ -480,24 +481,34 @@ public class oneRevert extends AppCompatActivity {
 
         for(int i = 0; i < A_oYXZo__x.size(); i++){
             double tmp_v__xyz;
+            double tmp_v__xy;
+            tmp_v__xy  = Math.sqrt( Math.pow(V_oYXZo__x.get(i), 2) + Math.pow(V_oYXZo__y.get(i), 2) );
             tmp_v__xyz = Math.sqrt( Math.pow(V_oYXZo__x.get(i), 2) + Math.pow(V_oYXZo__y.get(i), 2) + Math.pow(V_oYXZo__z.get(i), 2) );
+            V_oYXZo__xy.add(tmp_v__xy);
             V_oYXZo__xyz.add(tmp_v__xyz);
         }
 
+        S_oYXo.add((double) 0);
         S_oYXZo.add((double) 0);
         for(int i = 0; i < V_oYXZo__xyz.size() - 1; i++){;
+            double tmp_s__xy;
             double tmp_s__xyz;
+            tmp_s__xy = time*V_oYXZo__xy.get(i) + time*((V_oYXZo__xy.get(i+1) - V_oYXZo__xy.get(i))/2);
             tmp_s__xyz = time*V_oYXZo__xyz.get(i) + time*((V_oYXZo__xyz.get(i+1) - V_oYXZo__xyz.get(i))/2);
+            S_oYXo.add(tmp_s__xy);
             S_oYXZo.add(tmp_s__xyz);
         }
 
+        double all_way__xy = 0;
         double all_way__xyz = 0;
         for(int i = 0; i < S_oYXZo.size(); i++){
+            all_way__xy = all_way__xy + S_oYXo.get(i);
             all_way__xyz = all_way__xyz + S_oYXZo.get(i);
         }
+        Log.d("qqqqq","all_way__xy=\t\t" + roundDouble(all_way__xy, 4));
         Log.d("qqqqq","all_way__xyz=\t\t" + roundDouble(all_way__xyz, 4));
 
-        txt_1.setText("all_way__xyz=\t\t" + roundDouble(all_way__xyz, 4) );
+        txt_1.setText("all_way__xy=\t\t" + roundDouble(all_way__xy, 4) + "\nall_way__xyz=\t\t" + roundDouble(all_way__xyz, 4) );
     }
     private String roundDouble(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
